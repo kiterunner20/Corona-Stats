@@ -33,6 +33,7 @@ class CountryWiseAdapter(private val list: ArrayList<CountryWiseStatsItem>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(countryData: CountryWiseStatsItem) {
+
             binding.tvCountrydata.text = countryData.country
             binding.tvTotalCases.text = countryData.cases
             binding.tvActive.text = countryData.active
