@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardView.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="@dimen/medium_x"
+        app:cardElevation="@dimen/medium_x">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_countrydata"
+                style="@style/CovidCustomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Afganistan" />
+
+            <TextView
+                android:id="@+id/tv_total_cases_label"
+                style="@style/labeltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_cases"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_countrydata" />
+
+            <TextView
+                android:id="@+id/tv_deaths_label"
+                style="@style/labeltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deaths"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_total_cases_label" />
+
+            <TextView
+                android:id="@+id/tv_total_cases"
+                style="@style/displaytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_total_cases_label"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_countrydata"
+                tools:text="0000000" />
+
+            <TextView
+                android:id="@+id/tv_deaths"
+                style="@style/displaytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_deaths_label"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_total_cases_label"
+                tools:text="0000000" />
+
+
+            <TextView
+                android:id="@+id/tv_active_label"
+                style="@style/labeltextv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/large"
+                android:text="@string/active"
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toStartOf="@+id/tv_recovered_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deaths" />
+
+
+            <TextView
+                android:id="@+id/tv_recovered_label"
+                style="@style/labeltextv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/large"
+                android:text="@string/recovered"
+                android:textColor="@color/green_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_active_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deaths" />
+
+            <TextView
+                android:id="@+id/tv_active"
+                style="@style/displaytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/tv_recovered"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_active_label"
+                tools:text="0000000" />
+
+            <TextView
+                android:id="@+id/tv_recovered"
+                style="@style/displaytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_active"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recovered_label"
+                tools:text="0000000" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
