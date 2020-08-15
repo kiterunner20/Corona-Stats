@@ -4,6 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+        android:id="@+id/root"
+        android:layout_marginLeft="@dimen/large_x"
+        android:layout_marginRight="@dimen/large_x"
+        android:paddingLeft="@dimen/large_x"
+        android:paddingRight="@dimen/large_x"
+        android:layout_marginTop="@dimen/small_x"
+        android:layout_marginBottom="@dimen/small_x"
+        android:paddingBottom="@dimen/small_x"
+        android:paddingTop="@dimen/small_x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -11,13 +20,12 @@
             style="@style/CardView.Light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:padding="10dp"
             app:cardCornerRadius="@dimen/medium_x"
             app:cardElevation="@dimen/medium_x">
 
 
             <RelativeLayout
+                android:background="@color/davy_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
