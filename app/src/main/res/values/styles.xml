@@ -10,7 +10,7 @@
 
     <style name="CovidCustomText" parent="Widget.AppCompat.TextView">
         <item name="android:letterSpacing">.09</item>
-        <item name="android:textColor">@color/purple</item>
+        <item name="android:textColor">@color/color_recovered</item>
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:padding">@dimen/medium_x_text</item>
     </style>

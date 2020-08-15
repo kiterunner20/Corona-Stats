@@ -18,7 +18,6 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
     val repository: Repository = Repository()
     var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> = MutableLiveData()
 
-
     fun getCountryWiseList(): MutableLiveData<Response<List<CountryWiseStatsItem>>> {
         return countryData
     }
@@ -28,7 +27,7 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
 
         CoroutineScope(Dispatchers.Default).launch {
             updateUiThread(repository.getCountryList())
-            Log.v("1","Background thread " + Thread.currentThread().name)
+            Log.v("1", "Background thread " + Thread.currentThread().name)
         }
 
 
@@ -37,7 +36,7 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
     suspend fun updateUiThread(countryDataResponse: Response<List<CountryWiseStatsItem>>) {
         withContext(Main) {
             countryData.postValue(countryDataResponse)
-            Log.v("2","UI thread : " + Thread.currentThread().name)
+            Log.v("2", "UI thread : " + Thread.currentThread().name)
         }
     }
 

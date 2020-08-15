@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.databinding.ItemCountryWiseListBinding
 
-class CountryWiseAdapter(private val list: ArrayList<CountryWiseStatsItem>) :
+class CountryWiseAdapter(
+    private val listner: CountryClicked,
+    private val list: ArrayList<CountryWiseStatsItem>
+) :
     RecyclerView.Adapter<CountryWiseAdapter.ViewHolder>() {
 
 
@@ -40,13 +43,18 @@ class CountryWiseAdapter(private val list: ArrayList<CountryWiseStatsItem>) :
                     tvActive.text = countryData.active
                     tvDeaths.text = countryData.deaths.toString()
                     tvRecovered.text = countryData.recovered.toString()
+
+                    binding.root.setOnClickListener {
+                        listner.countryItemClicked(countryData)
+                    }
                 }
             }
 
         }
-
-
     }
 
+    interface CountryClicked {
+        fun countryItemClicked(item: CountryWiseStatsItem)
+    }
 
 }

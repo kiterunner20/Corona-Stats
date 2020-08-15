@@ -18,6 +18,7 @@
 
         <androidx.cardview.widget.CardView
             style="@style/CardView.Light"
+            android:id="@+id/cvcountrylist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/medium_x"
