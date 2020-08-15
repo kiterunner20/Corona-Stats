@@ -25,6 +25,7 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
 
     fun makeCountryAPICall() {
 
+
         CoroutineScope(Dispatchers.Default).launch {
             updateUiThread(repository.getCountryList())
             Log.v("1","Background thread " + Thread.currentThread().name)
