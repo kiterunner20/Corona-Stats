@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/corona_nav_graph"
+    app:startDestination="@id/countryFragment">
+
+    <fragment
+        android:id="@+id/countryFragment"
+        android:name="com.example.coronastats.ui.CovidCountryListFragment"
+        android:label="fragment_country_list"
+        tools:layout="@layout/fragment_country_list">
+
+        <action
+            android:id="@+id/action_to_more_info"
+            app:destination="@+id/moreinfo" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/moreinfo"
+        android:name="com.example.coronastats.ui.FragmentMoreInfo"
+        android:label="fragment_more_info"
+        tools:layout="@layout/fragment_more_info">
+
+        <action
+            android:id="@+id/next_action"
+            app:popUpTo="@id/countryFragment" />
+
+        <argument
+            android:name="countryname"
+            android:defaultValue="test"
+            app:argType="string"
+            />
+
+    </fragment>
+
+
+</navigation>
