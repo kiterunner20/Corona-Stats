@@ -1,4 +1,4 @@
-package com.example.coronastats
+package com.example.coronastats.ui.alllist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ class CountryWiseAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CountryWiseAdapter.ViewHolder {
+    ): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemCountryWiseListBinding.inflate(inflater)
         return ViewHolder(binding)

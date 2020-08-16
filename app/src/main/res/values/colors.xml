@@ -24,4 +24,5 @@
     <color name="color_recovered">#00CC99</color>
     <color name="color_active">#F2B900</color>
     <color name="color_confirmed">#F2B900</color>
+    <color name="light_yellow">#fff176</color>
 </resources>

@@ -21,6 +21,7 @@
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:padding">@dimen/small</item>
     </style>
+
     <style name="labeltextv2" parent="Widget.AppCompat.TextView">
         <item name="android:letterSpacing">.09</item>
         <item name="fontFamily">@font/poppins_regular</item>
@@ -35,6 +36,5 @@
     </style>
 
     <style name="recoved">Recovered</style>
-
 
 </resources>

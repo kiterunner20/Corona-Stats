@@ -1,5 +1,9 @@
 package com.example.coronastats.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class CountryWiseStatsItem(
     val active: String,
     val cases: String,
@@ -13,4 +17,4 @@ data class CountryWiseStatsItem(
     val todayCases: Double,
     val todayDeaths: Double,
     val updated: Double
-)
+) : Parcelable
