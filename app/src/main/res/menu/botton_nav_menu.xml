@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/indian_covid_stats"
+        android:icon="@drawable/ic_india"
+        android:title="@string/india" />
+    <item
+        android:id="@id/countryFragment"
+        android:icon="@drawable/ic_earth"
+        android:title="@string/worldwide" />
+</menu>

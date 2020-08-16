@@ -61,7 +61,6 @@ class CovidIndiaStatsFragment : BaseFragment() {
     }
 
     fun showProgress() {
-        Thread.sleep(1000)
         binding.progressbar.visibility = View.VISIBLE
         binding.error.visibility = View.GONE
     }

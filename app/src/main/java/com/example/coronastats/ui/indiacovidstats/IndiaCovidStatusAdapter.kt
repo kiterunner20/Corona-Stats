@@ -67,7 +67,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
             is ItemSummaryViewHolder -> {
                 holder.bind(covidStatsInfo?.data?.summary)
             }
-            is ItemHeaderViewHolder ->{
+            is ItemHeaderViewHolder -> {
                 holder.bind("Covid-19 status India")
             }
             is ItemSummaryUnViewHolder -> {
