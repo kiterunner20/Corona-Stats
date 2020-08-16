@@ -1,9 +1,8 @@
 package com.example.coronastats.ui.alllist
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.coronastats.Repository
 import com.example.coronastats.data.CountryWiseStatsItem
 import kotlinx.coroutines.CoroutineScope
@@ -13,8 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class CountryViewModel(application: Application) : AndroidViewModel(application) {
-
+class CountryViewModel : ViewModel() {
 
     val repository: Repository =
         Repository()

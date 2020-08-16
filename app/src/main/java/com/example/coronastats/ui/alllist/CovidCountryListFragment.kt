@@ -1,12 +1,14 @@
 package com.example.coronastats.ui.alllist
 
-import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coronastats.CovidMainScreenActivity
@@ -20,7 +22,7 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
 
     private lateinit var binding: FragmentCountryListBinding
     private lateinit var adapter: CountryWiseAdapter
-    lateinit var countryViewModel: CountryViewModel
+    private lateinit var countryViewModel: CountryViewModel
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -31,12 +33,22 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
         binding = FragmentCountryListBinding.inflate(inflater, container, false)
 
         navController = (activity as CovidMainScreenActivity).getNavController()
-        countryViewModel =
-            CountryViewModel(application = Application())
+        countryViewModel = ViewModelProvider(requireActivity()).get(CountryViewModel::class.java)
 
 
         countryViewModel.makeCountryAPICall()
 
+        binding.btnIndianData.setOnClickListener {
+            navController.navigate(R.id.indian_covid_stats)
+        }
+
+        observeChangesForVM()
+
+        return binding!!.root
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    private fun observeChangesForVM() {
         countryViewModel.getCountryWiseList()
             .observe(activity as CovidMainScreenActivity, Observer {
                 if (it.isSuccessful) {
@@ -50,14 +62,7 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
                 }
 
             })
-
-        binding.btnIndianData.setOnClickListener {
-            navController.navigate(R.id.indian_covid_stats)
-        }
-
-        return binding!!.root
     }
-
 
     private fun setUI(countryWiseStatsItem: ArrayList<CountryWiseStatsItem>) {
         if (countryWiseStatsItem.size > 0) {
