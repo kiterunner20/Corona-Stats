@@ -14,9 +14,9 @@ import retrofit2.Response
 
 class CountryViewModel : ViewModel() {
 
-    val repository: Repository =
+   private val repository: Repository =
         Repository()
-    var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> = MutableLiveData()
+    private var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> = MutableLiveData()
 
     fun getCountryWiseList(): MutableLiveData<Response<List<CountryWiseStatsItem>>> {
         return countryData
