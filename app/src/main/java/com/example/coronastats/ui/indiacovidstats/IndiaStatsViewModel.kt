@@ -26,7 +26,7 @@ class IndiaStatsViewModel : ViewModel() {
 
     fun callCovidStatsAPI() {
         showProgress()
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             responseForCovidStats = repository.getIndiaStats()
             withData(responseForCovidStats)
         }

@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/corona_nav_graph"
-    app:startDestination="@id/countryFragment">
+    app:startDestination="@id/indian_covid_stats">
 
+    <fragment
+        android:id="@+id/indian_covid_stats"
+        android:name="com.example.coronastats.ui.indiacovidstats.CovidIndiaStatsFragment"
+        android:label="fragment_covid_stats"
+        tools:layout="@layout/fragment_covid_india_stats" />
     <fragment
         android:id="@+id/countryFragment"
         android:name="com.example.coronastats.ui.alllist.CovidCountryListFragment"
@@ -33,12 +38,6 @@
             app:argType="string" />
 
     </fragment>
-
-    <fragment
-        android:id="@+id/indian_covid_stats"
-        android:name="com.example.coronastats.ui.indiacovidstats.CovidIndiaStatsFragment"
-        android:label="fragment_covid_stats"
-        tools:layout="@layout/fragment_covid_india_stats"></fragment>
 
 
 </navigation>
