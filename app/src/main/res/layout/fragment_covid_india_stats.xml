@@ -3,18 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/moreinfo"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/recived_info"
-        style="@style/displaytext"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_india_data"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/large_x"
-        android:textColor="@color/red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Selected country" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_regional" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

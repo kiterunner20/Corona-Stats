@@ -1,9 +1,10 @@
-package com.example.coronastats
+package com.example.coronastats.ui.alllist
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.coronastats.Repository
 import com.example.coronastats.data.CountryWiseStatsItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,8 @@ import retrofit2.Response
 class CountryViewModel(application: Application) : AndroidViewModel(application) {
 
 
-    val repository: Repository = Repository()
+    val repository: Repository =
+        Repository()
     var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> = MutableLiveData()
 
     fun getCountryWiseList(): MutableLiveData<Response<List<CountryWiseStatsItem>>> {

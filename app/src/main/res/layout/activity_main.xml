@@ -7,6 +7,7 @@
     android:background="#eeeeee"
     tools:context=".CovidMainScreenActivity">
 
+
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

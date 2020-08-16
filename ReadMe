@@ -1,0 +1,19 @@
+Corona stats - App
+
+Architecture
+MVVM
+
+Used :
+
+Kotlin - Language
+Coroutines - Threading
+Retrofit for network calls
+ViewBinding
+DataBinding
+Single activity application
+Native Recyclerview with multiple viewtypes
+Repository pattern
+Navigation component
+ - Fragment navigation
+ - Safe args
+ Singleton classes
