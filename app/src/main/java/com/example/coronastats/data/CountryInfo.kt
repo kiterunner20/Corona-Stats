@@ -12,4 +12,4 @@ data class CountryInfo(
     val iso3: String,
     val lat: Double,
     val long: Double
-) :Parcelable
+) : Parcelable

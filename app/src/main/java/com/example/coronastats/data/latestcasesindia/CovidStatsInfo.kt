@@ -19,5 +19,5 @@ data class CovidStatsInfo(
     @field:SerializedName("lastOriginUpdate")
     val lastOriginUpdate: String? = null,
 
-    val type :Int = 1
+    val type: Int = 1
 ) : Parcelable
