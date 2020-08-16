@@ -19,9 +19,7 @@ class CovidMainScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        binding.btnIndianData.setOnClickListener {
-            navController.navigate(R.id.indian_covid_stats)
-        }
+
 
 
     }
@@ -30,13 +28,7 @@ class CovidMainScreenActivity : AppCompatActivity() {
         return navController
     }
 
-    fun hideButton() {
-        binding.btnIndianData.visibility = View.VISIBLE
-    }
 
-    fun showButton() {
-        binding.btnIndianData.visibility = View.VISIBLE
-    }
 
 }
 

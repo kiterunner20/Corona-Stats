@@ -7,10 +7,7 @@ import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
 import com.example.coronastats.data.latestcasesindia.RegionalItem
 import com.example.coronastats.data.latestcasesindia.Summary
 import com.example.coronastats.data.latestcasesindia.UnofficialSummaryItem
-import com.example.coronastats.databinding.ItemLastUpdatedBinding
-import com.example.coronastats.databinding.ItemRegionalBinding
-import com.example.coronastats.databinding.ItemSummaryBinding
-import com.example.coronastats.databinding.ItemSummaryUnofficialBinding
+import com.example.coronastats.databinding.*
 
 class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -18,6 +15,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     private var covidStatsInfo: CovidStatsInfo? = null
 
     companion object {
+        const val VIEW_HEADER = 5
         const val VIEW_TYPE_REGIONAL = 1
         const val VIEW_TYPE_LAST_UPDATED = 2
         const val VIEW_TYPE_SUMMARY = 3
@@ -41,6 +39,11 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
                 val binding = ItemSummaryBinding.inflate(inflater)
                 return ItemSummaryViewHolder(binding)
             }
+            VIEW_HEADER -> {
+                val inflater = LayoutInflater.from(parent.context)
+                val binding = ItemHeaderIndiaStatsBinding.inflate(inflater)
+                return ItemHeaderViewHolder(binding)
+            }
             else -> {
                 val inflater = LayoutInflater.from(parent.context)
                 val binding = ItemSummaryUnofficialBinding.inflate(inflater)
@@ -50,19 +53,22 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     }
 
     override fun getItemCount(): Int {
-        return regionList.size + 3
+        return regionList.size + 4
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is RegionalViewHolder -> {
-                holder.bind(regionList.get(position - 3))
+                holder.bind(regionList.get(position - 4))
             }
             is ItemLastUpdatedViewHolder -> {
                 holder.bind(covidStatsInfo?.lastOriginUpdate)
             }
             is ItemSummaryViewHolder -> {
                 holder.bind(covidStatsInfo?.data?.summary)
+            }
+            is ItemHeaderViewHolder ->{
+                holder.bind("Covid-19 status India")
             }
             is ItemSummaryUnViewHolder -> {
                 holder.bind(covidStatsInfo?.data?.unofficialSummary?.get(0))
@@ -72,9 +78,10 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     override fun getItemViewType(position: Int): Int {
         when (position) {
-            0 -> return 2
-            1 -> return 3
-            2 -> return 4
+            0 -> return 5
+            1 -> return 2
+            2 -> return 3
+            3 -> return 4
             else -> return 1
         }
     }
@@ -90,12 +97,8 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(regionalItem: RegionalItem) {
-            with(binding) {
-                regionName.text = regionalItem.loc
-                txtConfirmed.text = "Confirmed : " + regionalItem.totalConfirmed
-                txtRecovered.text = "Recovered : " + regionalItem.discharged
-                txtDeaths.text = "Deaths : " + regionalItem.deaths
-            }
+            binding.item = regionalItem
+            binding.executePendingBindings()
         }
 
     }
@@ -110,26 +113,30 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         }
     }
 
+    inner class ItemHeaderViewHolder(private val binding: ItemHeaderIndiaStatsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: String?) {
+            with(binding) {
+                tvHeader.text = item
+            }
+        }
+    }
+
     inner class ItemSummaryViewHolder(private val binding: ItemSummaryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Summary?) {
-            with(binding) {
-                txtConfirmed.text =
-                    "Confirmed : " + item?.confirmedCasesForeign + item?.confirmedCasesIndian
-                txtRecovered.text = "Recovered : " + item?.discharged
-                txtDeaths.text = "Deaths : " + item?.deaths
-            }
+            binding.item = item
+            binding.executePendingBindings()
         }
     }
 
     inner class ItemSummaryUnViewHolder(private val binding: ItemSummaryUnofficialBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: UnofficialSummaryItem?) {
-            with(binding) {
-                txtConfirmed.text = "Confirmed : " + item?.active
-                txtRecovered.text = "Recovered : " + item?.recovered
-                txtDeaths.text = "Deaths : " + item?.deaths
-            }
+            binding.item = item
+            binding.executePendingBindings()
+
         }
     }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="#C5E1A5">
+
+    <ImageView
+        android:id="@+id/corona_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/medium"
+        app:srcCompat="@drawable/ic_virus" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/corona_icon"
+        android:fontFamily="@font/poppins_bold"
+        android:padding="@dimen/medium"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large_text"
+        tools:text="India -Covid stats" />
+
+</RelativeLayout>

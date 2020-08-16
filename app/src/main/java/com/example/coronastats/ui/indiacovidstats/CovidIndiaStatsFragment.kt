@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coronastats.CovidMainScreenActivity
+import com.example.coronastats.R
 import com.example.coronastats.databinding.FragmentCovidIndiaStatsBinding
 import com.example.coronastats.ui.BaseFragment
 
@@ -49,6 +50,7 @@ class CovidIndiaStatsFragment : BaseFragment() {
                     binding!!.rcvIndiaData.adapter = adapter
                 }
             })
+
 
         return binding.root
     }

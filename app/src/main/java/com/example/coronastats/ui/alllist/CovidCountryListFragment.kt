@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coronastats.CovidMainScreenActivity
+import com.example.coronastats.R
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.databinding.FragmentCountryListBinding
 import com.example.coronastats.ui.BaseFragment
@@ -30,7 +31,6 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
         binding = FragmentCountryListBinding.inflate(inflater, container, false)
 
         navController = (activity as CovidMainScreenActivity).getNavController()
-        (activity as CovidMainScreenActivity).hideButton()
         countryViewModel =
             CountryViewModel(application = Application())
 
@@ -51,6 +51,9 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
 
             })
 
+        binding.btnIndianData.setOnClickListener {
+            navController.navigate(R.id.indian_covid_stats)
+        }
 
         return binding!!.root
     }

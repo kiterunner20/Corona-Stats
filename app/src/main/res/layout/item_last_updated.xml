@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:background="@color/light_yellow">
+    android:background="#FFE082">
 
     <TextView
         android:id="@+id/tv_last_updated"
@@ -13,10 +12,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:padding="@dimen/medium"
-        android:textColor="@color/black"
+        android:textColor="#01579B"
         android:textSize="@dimen/medium_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="Last updated :15-08-2020" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

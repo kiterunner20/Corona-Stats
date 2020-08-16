@@ -5,20 +5,20 @@
 
     <RelativeLayout
         android:id="@+id/root"
-        android:layout_marginLeft="@dimen/large_x"
-        android:layout_marginRight="@dimen/large_x"
-        android:paddingLeft="@dimen/large_x"
-        android:paddingRight="@dimen/large_x"
-        android:layout_marginTop="@dimen/small_x"
-        android:layout_marginBottom="@dimen/small_x"
-        android:paddingBottom="@dimen/small_x"
-        android:paddingTop="@dimen/small_x"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/large_x"
+        android:layout_marginTop="@dimen/small_x"
+        android:layout_marginRight="@dimen/large_x"
+        android:layout_marginBottom="@dimen/small_x"
+        android:paddingLeft="@dimen/large_x"
+        android:paddingTop="@dimen/small_x"
+        android:paddingRight="@dimen/large_x"
+        android:paddingBottom="@dimen/small_x">
 
         <androidx.cardview.widget.CardView
-            style="@style/CardView.Light"
             android:id="@+id/cvcountrylist"
+            style="@style/CardView.Light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/medium_x"
@@ -26,9 +26,9 @@
 
 
             <RelativeLayout
-                android:background="@color/davy_grey"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/davy_grey">
 
                 <TextView
                     android:id="@+id/tv_countrydata"

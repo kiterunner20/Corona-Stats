@@ -7,16 +7,6 @@
     android:background="#eeeeee"
     tools:context=".CovidMainScreenActivity">
 
-    <Button
-        android:id="@+id/btn_indian_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium"
-        android:background="@color/black"
-        android:text="India Covid Stats"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -27,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_indian_data"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/corona_nav_graph" />
 
 
