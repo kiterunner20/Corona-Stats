@@ -1,8 +1,11 @@
 package com.example.coronastats.workmanager
 
 import android.content.Context
-import androidx.work.OneTimeWorkRequest
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import java.util.concurrent.TimeUnit
 
 class ManageWorkManager(ctx: Context) {
 
@@ -10,7 +13,17 @@ class ManageWorkManager(ctx: Context) {
 
     fun doSomeBackGroundWork() {
 
-        workManager.enqueue(OneTimeWorkRequest.from(IndianStatsWorker::class.java))
+        val constraints = Constraints.Builder()
+            .setRequiresCharging(true)
+            .build()
+        val work = PeriodicWorkRequestBuilder<IndianStatsWorker>(15, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
+        workManager.enqueueUniquePeriodicWork(
+            "My periodic work",
+            ExistingPeriodicWorkPolicy.REPLACE,
+            work
+        )
     }
 
 

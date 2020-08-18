@@ -45,7 +45,7 @@ dependencies {
     def meterial_version = "1.1.0-alpha06"
     def room_version = "2.2.5"
     def db_version = "1.0.6"
-    def work_manager_version = "2.3.3"
+    def work_manager_version = "2.4.0"
 
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
