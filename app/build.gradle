@@ -45,6 +45,7 @@ dependencies {
     def meterial_version = "1.1.0-alpha06"
     def room_version = "2.2.5"
     def db_version = "1.0.6"
+    def work_manager_version = "2.3.3"
 
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -63,6 +64,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.8.1")
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -73,6 +75,10 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
+
+    implementation "androidx.work:work-runtime-ktx:$work_manager_version"
+
+
 
     debugImplementation "com.amitshekhar.android:debug-db:$db_version"
 

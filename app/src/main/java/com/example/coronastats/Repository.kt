@@ -1,6 +1,7 @@
 package com.example.coronastats
 
 import android.content.Context
+import android.util.Log
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
 import com.example.coronastats.data.room.CovidDatabase
@@ -27,7 +28,7 @@ class Repository {
 
             val covidInfo = CovidStatusInfo(
                 System.currentTimeMillis(), covidStatsInfo.body()?.lastRefreshed,
-                covidStatsInfo.body()?.lastRefreshed,covidStatsInfo.body()?.data?.summary
+                covidStatsInfo.body()?.lastRefreshed, covidStatsInfo.body()?.data?.summary
             )
 
             database.sleepDao.insert(covidInfo)
