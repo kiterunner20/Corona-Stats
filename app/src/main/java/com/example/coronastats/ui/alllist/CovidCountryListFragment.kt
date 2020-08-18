@@ -44,7 +44,7 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
 
         observeChangesForVM()
 
-        return binding!!.root
+        return binding.root
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -70,9 +70,9 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
                 this,
                 countryWiseStatsItem
             )
-            binding!!.rcvListResult.layoutManager =
+            binding.rcvListResult.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            binding!!.rcvListResult.adapter = adapter
+            binding.rcvListResult.adapter = adapter
 
         }
     }
