@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:background="#C5E1A5">
+    android:background="#d7ccc8">
 
     <ImageView
         android:id="@+id/corona_icon"
