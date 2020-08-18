@@ -35,7 +35,7 @@ class CovidIndiaStatsFragment : BaseFragment() {
         indiaStatsViewModel =
             ViewModelProvider(requireActivity()).get(IndiaStatsViewModel::class.java)
 
-        indiaStatsViewModel.callCovidStatsAPI()
+        indiaStatsViewModel.callCovidStatsAPI(context)
         observerChangesFromVM();
 
         return binding.root

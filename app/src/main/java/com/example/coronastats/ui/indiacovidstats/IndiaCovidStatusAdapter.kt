@@ -93,7 +93,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         }
     }
 
-    inner class RegionalViewHolder(private val binding: ItemRegionalBinding) :
+     class RegionalViewHolder(private val binding: ItemRegionalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(regionalItem: RegionalItem) {
@@ -103,7 +103,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     }
 
-    inner class ItemLastUpdatedViewHolder(private val binding: ItemLastUpdatedBinding) :
+     class ItemLastUpdatedViewHolder(private val binding: ItemLastUpdatedBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: String?) {
@@ -113,7 +113,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         }
     }
 
-    inner class ItemHeaderViewHolder(private val binding: ItemHeaderIndiaStatsBinding) :
+     class ItemHeaderViewHolder(private val binding: ItemHeaderIndiaStatsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: String?) {
@@ -123,7 +123,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         }
     }
 
-    inner class ItemSummaryViewHolder(private val binding: ItemSummaryBinding) :
+     class ItemSummaryViewHolder(private val binding: ItemSummaryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Summary?) {
             binding.item = item
@@ -131,7 +131,7 @@ class IndiaCovidStatusAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         }
     }
 
-    inner class ItemSummaryUnViewHolder(private val binding: ItemSummaryUnofficialBinding) :
+     class ItemSummaryUnViewHolder(private val binding: ItemSummaryUnofficialBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: UnofficialSummaryItem?) {
             binding.item = item

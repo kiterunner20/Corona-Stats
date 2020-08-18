@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/davy_grey"
+        android:background="@color/white"
         android:padding="@dimen/small">
 
 
@@ -33,7 +33,7 @@
             android:layout_marginLeft="@dimen/medium"
             android:layout_toRightOf="@+id/img_icon"
             android:text="@{item.loc}"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/large_text"
             tools:text="Kerala" />
 

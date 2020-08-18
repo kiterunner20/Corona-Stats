@@ -3,6 +3,7 @@ package com.example.coronastats.ui.alllist
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.coronastats.Repository
 import com.example.coronastats.data.CountryWiseStatsItem
 import kotlinx.coroutines.CoroutineScope
@@ -14,9 +15,9 @@ import retrofit2.Response
 
 class CountryViewModel : ViewModel() {
 
-   private val repository: Repository =
-        Repository()
-    private var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> = MutableLiveData()
+    private val repository: Repository = Repository()
+    private var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> =
+        MutableLiveData()
 
     fun getCountryWiseList(): MutableLiveData<Response<List<CountryWiseStatsItem>>> {
         return countryData
@@ -25,9 +26,13 @@ class CountryViewModel : ViewModel() {
     fun makeCountryAPICall() {
 
 
-        CoroutineScope(Dispatchers.Default).launch {
-            updateUiThread(repository.getCountryList())
-            Log.v("1", "Background thread " + Thread.currentThread().name)
+        viewModelScope.launch {
+            try {
+                updateUiThread(repository.getCountryList())
+                Log.v("1", "Background thread " + Thread.currentThread().name)
+            } catch (e: Exception) {
+                Log.v("Error", "Exception handled")
+            }
         }
 
 

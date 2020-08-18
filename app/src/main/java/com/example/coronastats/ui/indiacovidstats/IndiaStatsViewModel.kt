@@ -1,12 +1,16 @@
 package com.example.coronastats.ui.indiacovidstats
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.coronastats.Repository
 import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
 import com.example.coronastats.ui.viewstate.CountryViewState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,11 +28,18 @@ class IndiaStatsViewModel : ViewModel() {
         return indiaCovidStats
     }
 
-    fun callCovidStatsAPI() {
+    fun callCovidStatsAPI(context: Context?) {
         showProgress()
-        CoroutineScope(Dispatchers.IO).launch {
-            responseForCovidStats = repository.getIndiaStats()
-            withData(responseForCovidStats)
+
+        CoroutineScope(IO).launch {
+            try {
+                responseForCovidStats = repository.getIndiaStats(context)
+                Log.v("Thread", Thread.currentThread().name)
+                withData(responseForCovidStats)
+            } catch (e: Exception) {
+                onFailiure(e.message.toString())
+            }
+
         }
     }
 
@@ -36,6 +47,7 @@ class IndiaStatsViewModel : ViewModel() {
     private suspend fun withData(responseForCovidStats: Response<CovidStatsInfo>) {
         withContext(Main) {
             if (responseForCovidStats.isSuccessful) {
+                Log.v("Thread2", Thread.currentThread().name)
                 CountryViewState.SUCCESS.data = responseForCovidStats
                 indiaCovidStats.postValue(CountryViewState.SUCCESS)
             } else {
@@ -53,8 +65,5 @@ class IndiaStatsViewModel : ViewModel() {
         indiaCovidStats.postValue(CountryViewState.FAILED)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-    }
 
 }
