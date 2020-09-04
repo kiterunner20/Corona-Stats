@@ -36,7 +36,7 @@ class CovidIndiaStatsFragment : BaseFragment() {
             ViewModelProvider(requireActivity()).get(IndiaStatsViewModel::class.java)
 
         indiaStatsViewModel.callCovidStatsAPI(context)
-        observerChangesFromVM();
+        observerChangesFromVM()
 
         return binding.root
     }
@@ -51,10 +51,10 @@ class CovidIndiaStatsFragment : BaseFragment() {
                     CountryViewState.SUCCESS -> {
                         showSuccess()
                         adapter = IndiaCovidStatusAdapter()
-                        binding!!.rcvIndiaData.layoutManager =
+                        binding.rcvIndiaData.layoutManager =
                             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                         adapter.setData(it.data?.body())
-                        binding!!.rcvIndiaData.adapter = adapter
+                        binding.rcvIndiaData.adapter = adapter
                     }
                 }
             })

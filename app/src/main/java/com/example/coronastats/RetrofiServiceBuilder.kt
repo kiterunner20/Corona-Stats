@@ -1,12 +1,23 @@
 package com.example.coronastats
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object RetrofiServiceBuilder {
 
-    private val client = OkHttpClient.Builder().build()
+
+    var logging: HttpLoggingInterceptor =
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+
+
+    var client: OkHttpClient = OkHttpClient.Builder().writeTimeout(60000, TimeUnit.MILLISECONDS)
+        .connectTimeout(60000, TimeUnit.MILLISECONDS)
+        .readTimeout(60000, TimeUnit.MILLISECONDS)
+        .addInterceptor(logging)
+        .build()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(Constants.BASE_URL)
