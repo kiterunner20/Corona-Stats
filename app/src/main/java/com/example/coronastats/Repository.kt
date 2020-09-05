@@ -1,6 +1,5 @@
 package com.example.coronastats
 
-import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
 import com.example.coronastats.local.LocalDatabase
 import com.example.coronastats.network.RemoteConfig
@@ -15,9 +14,6 @@ open class Repository @Inject constructor(
 
     lateinit var covidStatsInfo: Response<CovidStatsInfo>
 
-    suspend fun getCountryList(): Response<List<CountryWiseStatsItem>> {
-        return remoteConfig.getCountryList()
-    }
 
     suspend fun getIndiaStats(): Response<CovidStatsInfo> {
         covidStatsInfo = remoteConfig.getIndiaStats()
