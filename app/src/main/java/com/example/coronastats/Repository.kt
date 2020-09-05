@@ -1,39 +1,30 @@
 package com.example.coronastats
 
-import android.content.Context
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
-import com.example.coronastats.data.room.CovidDatabase
-import com.example.coronastats.data.room.CovidStatusInfo
+import com.example.coronastats.local.LocalDatabase
+import com.example.coronastats.network.RemoteConfig
 import retrofit2.Response
+import javax.inject.Inject
 
 
-class Repository {
-
-    val apiRequest = RetrofiServiceBuilder.buildService(APIService::class.java)
-    val indianDataRequest = RetrofiServiceBuilder.buildServiceIndia(APIService::class.java)
+open class Repository @Inject constructor(
+    private val database: LocalDatabase,
+    private val remoteConfig: RemoteConfig
+) {
 
     lateinit var covidStatsInfo: Response<CovidStatsInfo>
 
     suspend fun getCountryList(): Response<List<CountryWiseStatsItem>> {
-        return apiRequest.getCoronaStatsOnCountries()
+        return remoteConfig.getCountryList()
     }
 
-    suspend fun getIndiaStats(context: Context?): Response<CovidStatsInfo> {
-        covidStatsInfo = indianDataRequest.getIndiaStats()
+    suspend fun getIndiaStats(): Response<CovidStatsInfo> {
+        covidStatsInfo = remoteConfig.getIndiaStats()
 
-        if (covidStatsInfo.isSuccessful) {
-            val database = CovidDatabase.getInstance(context)
+        database.insert(covidStatsInfo)
 
-            val covidInfo = CovidStatusInfo(
-                System.currentTimeMillis(), covidStatsInfo.body()?.lastRefreshed,
-                covidStatsInfo.body()?.lastRefreshed,covidStatsInfo.body()?.data?.summary
-            )
-
-            database.sleepDao.insert(covidInfo)
-        }
-
-        return indianDataRequest.getIndiaStats()
+        return covidStatsInfo
     }
 
 

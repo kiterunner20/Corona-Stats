@@ -1,21 +1,20 @@
 package com.example.coronastats.ui.alllist
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coronastats.Repository
 import com.example.coronastats.data.CountryWiseStatsItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class CountryViewModel : ViewModel() {
+class CountryViewModel @ViewModelInject constructor(private val repository: Repository) :
+    ViewModel() {
 
-    private val repository: Repository = Repository()
     private var countryData: MutableLiveData<Response<List<CountryWiseStatsItem>>> =
         MutableLiveData()
 

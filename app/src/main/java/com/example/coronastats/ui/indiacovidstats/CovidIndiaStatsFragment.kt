@@ -4,20 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coronastats.CovidMainScreenActivity
 import com.example.coronastats.databinding.FragmentCovidIndiaStatsBinding
 import com.example.coronastats.ui.BaseFragment
 import com.example.coronastats.ui.viewstate.CountryViewState
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class CovidIndiaStatsFragment : BaseFragment() {
 
-    private lateinit var indiaStatsViewModel: IndiaStatsViewModel
+    private val indiaStatsViewModel: IndiaStatsViewModel by viewModels()
     private lateinit var binding: FragmentCovidIndiaStatsBinding
     private lateinit var navController: NavController
     private lateinit var adapter: IndiaCovidStatusAdapter
@@ -32,11 +35,9 @@ class CovidIndiaStatsFragment : BaseFragment() {
         binding = FragmentCovidIndiaStatsBinding.inflate(inflater, container, false)
 
         navController = (activity as CovidMainScreenActivity).getNavController()
-        indiaStatsViewModel =
-            ViewModelProvider(requireActivity()).get(IndiaStatsViewModel::class.java)
 
         indiaStatsViewModel.callCovidStatsAPI(context)
-        observerChangesFromVM();
+        observerChangesFromVM()
 
         return binding.root
     }
@@ -51,10 +52,10 @@ class CovidIndiaStatsFragment : BaseFragment() {
                     CountryViewState.SUCCESS -> {
                         showSuccess()
                         adapter = IndiaCovidStatusAdapter()
-                        binding!!.rcvIndiaData.layoutManager =
+                        binding.rcvIndiaData.layoutManager =
                             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                         adapter.setData(it.data?.body())
-                        binding!!.rcvIndiaData.adapter = adapter
+                        binding.rcvIndiaData.adapter = adapter
                     }
                 }
             })

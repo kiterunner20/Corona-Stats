@@ -1,4 +1,4 @@
-package com.example.coronastats.data.room
+package com.example.coronastats.local.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
