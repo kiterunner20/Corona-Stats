@@ -1,22 +1,20 @@
 package com.example.coronastats.network
 
 import com.example.coronastats.APIService
-import com.example.coronastats.RetrofiServiceBuilder
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
 import retrofit2.Response
+import javax.inject.Inject
 
-class RemoteConfig {
+class RemoteConfig @Inject constructor(private val apiService: APIService) {
 
-    val apiRequest = RetrofiServiceBuilder.buildService(APIService::class.java)
-    val indianDataRequest = RetrofiServiceBuilder.buildServiceIndia(APIService::class.java)
 
     suspend fun getCountryList(): Response<List<CountryWiseStatsItem>> {
-        return apiRequest.getCoronaStatsOnCountries()
+        return apiService.getCoronaStatsOnCountries()
     }
 
     suspend fun getIndiaStats(): Response<CovidStatsInfo> {
-        return indianDataRequest.getIndiaStats()
+        return apiService.getIndiaStats()
     }
 
 }

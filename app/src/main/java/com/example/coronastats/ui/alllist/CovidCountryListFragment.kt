@@ -5,10 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coronastats.CovidMainScreenActivity
@@ -16,13 +16,15 @@ import com.example.coronastats.R
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.databinding.FragmentCountryListBinding
 import com.example.coronastats.ui.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClicked {
 
 
     private lateinit var binding: FragmentCountryListBinding
     private lateinit var adapter: CountryWiseAdapter
-    private lateinit var countryViewModel: CountryViewModel
+    private val countryViewModel: CountryViewModel by viewModels()
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -33,7 +35,6 @@ class CovidCountryListFragment : BaseFragment(), CountryWiseAdapter.CountryClick
         binding = FragmentCountryListBinding.inflate(inflater, container, false)
 
         navController = (activity as CovidMainScreenActivity).getNavController()
-        countryViewModel = ViewModelProvider(requireActivity()).get(CountryViewModel::class.java)
 
 
         countryViewModel.makeCountryAPICall()

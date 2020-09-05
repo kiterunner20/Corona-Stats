@@ -1,18 +1,17 @@
 package com.example.coronastats
 
-import android.content.Context
 import com.example.coronastats.data.CountryWiseStatsItem
 import com.example.coronastats.data.latestcasesindia.CovidStatsInfo
 import com.example.coronastats.local.LocalDatabase
 import com.example.coronastats.network.RemoteConfig
 import retrofit2.Response
+import javax.inject.Inject
 
 
-class Repository {
-
-    val remoteConfig: RemoteConfig = RemoteConfig()
-    val localDatabase: LocalDatabase = LocalDatabase()
-
+open class Repository @Inject constructor(
+    private val database: LocalDatabase,
+    private val remoteConfig: RemoteConfig
+) {
 
     lateinit var covidStatsInfo: Response<CovidStatsInfo>
 
@@ -20,10 +19,10 @@ class Repository {
         return remoteConfig.getCountryList()
     }
 
-    suspend fun getIndiaStats(context: Context?): Response<CovidStatsInfo> {
+    suspend fun getIndiaStats(): Response<CovidStatsInfo> {
         covidStatsInfo = remoteConfig.getIndiaStats()
 
-        localDatabase.insert(covidStatsInfo, context)
+        database.insert(covidStatsInfo)
 
         return covidStatsInfo
     }
