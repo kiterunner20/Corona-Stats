@@ -5,14 +5,10 @@ For more details regarding the libraries check  [Link](https://github.com/kiteru
 
 ## Libraries 
   
-  **Networking** - Handles the network part 
-    _Retrofit
-    _GSON 
-    _OkHttp 
-  
+  - **Networking** - Handles the network part 
   - **Navigation Components** -Solves the msytery of manual fragment transactions and removes a lot of boiler plate code
   - **Meterial design** - New design components introduced by google for better and best design practices.
-  - **ViewBinding and databinding** - Binding the views from activity, fragment or adapter by using a binder. Dont have to manually write the boilerplate       findViewById..
+  - **ViewBinding and databinding** - Binding the views from activity, fragment or adapter by using a binder. Dont have to manually write the boilerplate             findViewById..
   - **Coroutines** - For threading does the .
   - **Room** - SQLite database using Room persistance library
   - **Work Manager** - Scheduling and executing the works in the background.
