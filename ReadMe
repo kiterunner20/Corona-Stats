@@ -1,1 +1,16 @@
 
+## Corona status -App(Indian status) -Under dev
+
+Corona app is a learning android project which uses the latest Jetpack components and some set of 3rd party libraries.
+For more details regarding the libraries check  [Link](https://github.com/kiterunner20/Corona-Stats/blob/feature/develop/app/build.gradle)
+
+## Libraries 
+  
+  - **Networking** - Handles the network part 
+  - **Navigation Components** -Solves the msytery of manual fragment transactions and removes a lot of boiler plate code
+  - **Meterial design** - New design components introduced by google for better and best design practices.
+  - **ViewBinding and databinding** - Binding the views from activity, fragment or adapter by using a binder. Dont have to manually write the boilerplate             findViewById..
+  - **Coroutines** - For threading does the .
+  - **Room** - SQLite database using Room persistance library
+  - **Work Manager** - Scheduling and executing the works in the background.
+  - **Dagger Hilt** - Dependency injection library 
