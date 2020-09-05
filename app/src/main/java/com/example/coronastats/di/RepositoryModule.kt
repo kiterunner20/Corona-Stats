@@ -9,6 +9,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
+/**
+ * This module can be installed into the application component class
+ * Creating a dependency graph.
+ */
+
 @Module
 @InstallIn(ApplicationComponent::class)
 object RepositoryModule {
